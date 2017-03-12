@@ -9,6 +9,9 @@ class Particle():
         self.vx=vx
         self.vy=vy
         
+    def __str__ (self):
+        return "(%s, %s, %s, %s, %s)" % (self.mass, self.x, self.y, self.vx, self.vx)    
+        
 
 par_list=[]
 
