@@ -1,4 +1,5 @@
 from __future__ import division
+import numpy as np
 
 class Particle():
     def __init__(self,mas,x,y,vx,vy):
@@ -20,7 +21,27 @@ def merge_particle(part1,part2):
     prt3=Particle(massT,xT,yT,vxT,vyT)
     return prt3
     
-
+def merged_par_list(par_list,rc):
+    prnum=len(par_list)
+    for i in range(prnum):
+        for j in range(i+1,prnum):
+            m1=par_list[i].mass
+            m2=par_list[j].mass             
+            if (m1>0 and m2>0):    
+                x1=par_list[i].x
+                y1=par_list[i].y            
+                x2=par_list[j].x
+                y2=par_list[j].y                            
+                r=np.sqrt((x2-x1)**2+(y2-y1)**2)                     
+                if (r<rc):
+                    merged_par=merge_particle(par_list[i],par_list[j])
+                    zero_par=Particle(0,x1,y1,par_list[i].vx,par_list[i].vy)
+                    par_list[i]=merged_par
+                    par_list[j]=zero_par
+             
+    return par_list
+    
+    
 
 
 
