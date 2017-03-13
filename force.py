@@ -14,7 +14,7 @@ import math as math
 #         return "(%s, %s, %s, %s, %s)" % (self.mass, self.x, self.y, self.vx, self.vy)
 
 def Acceleration (particles):
-    G = 1.0
+    G = 1
     AccList_x = []
     AccList_y = []
     nParticle = len(particles) 

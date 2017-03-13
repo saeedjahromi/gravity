@@ -3,6 +3,8 @@ import initialize as ini
 import force as frc
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+import random
+# import string
 
 
 
@@ -16,17 +18,28 @@ dt=0.01
 rc=0.1
 max_iter=1000
 
+
+
 pr.par_list=ini.initialize(par_num, lx, ly, max_mass)
+# p1=pr.Particle(18,0,0,0,0)
+# p2=pr.Particle(2,7,0,0,3.5)
+# pr.par_list=[p1,p2]
+
 pr.merged_par_list(pr.par_list, rc)
 ini_pos=pr.get_pos(pr.par_list)
 
 fig = plt.figure()
 fig.set_dpi(100)
-ax = plt.axes(xlim=(-lx,lx), ylim=(-ly,ly))
+ax = plt.axes(xlim=(-2*lx,2*lx), ylim=(-2*ly,2*ly))
+
+
+def pcolor():
+    color="#%06x" % random.randint(0, 0xFFFFFF)
+    return color
 
 patch=[]
 for i in range(len(ini_pos)):
-    patch.append(plt.Circle((ini_pos[i][0],ini_pos[i][1]) ,0.3,fc='b'))
+    patch.append(plt.Circle((ini_pos[i][0],ini_pos[i][1]) ,pr.par_list[i].mass/10.0,fc=pcolor()))
 
 def anim_init():    
     for i in range(len(ini_pos)):
@@ -38,7 +51,7 @@ def anim_init():
 
 def animate(i):
     frc.update_particle_list(pr.par_list, dt)
-    pr.merged_par_list(pr.par_list, rc)
+#     pr.merged_par_list(pr.par_list, rc)
     pos_list=pr.get_pos(pr.par_list)
     for i in range(len(pos_list)):
         patch[i].center=(pos_list[i][0],pos_list[i][1])

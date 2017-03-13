@@ -38,7 +38,7 @@ def merged_par_list(par_list,rc):
                 r=np.sqrt((x2-x1)**2+(y2-y1)**2)                     
                 if (r<rc):
                     merged_par=merge_particle(par_list[i],par_list[j])
-                    zero_par=Particle(0,x1,y1,par_list[i].vx,par_list[i].vy)
+                    zero_par=Particle(0,x1,y1,0,0)
                     par_list[i]=merged_par
                     par_list[j]=zero_par
              
