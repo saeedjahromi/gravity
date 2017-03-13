@@ -45,6 +45,15 @@ def merged_par_list(par_list,rc):
     return par_list
     
     
-
+def get_pos(plist):
+    xlist = []
+    ylist = []
+    zlist = []
+    for k in range(len(plist)):
+        if plist[k].mass > 0:
+            xlist.append(plist[k].x)
+            ylist.append(plist[k].y)
+    zlist = zip(xlist, ylist)
+    return zlist
 
 
