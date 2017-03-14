@@ -13,7 +13,7 @@ import random
 lx=10
 ly=10
 par_num=6
-max_mass=20
+max_mass=10
 dt=0.01
 rc=0.1
 max_iter=1000
@@ -39,7 +39,7 @@ def pcolor():
 
 patch=[]
 for i in range(len(ini_pos)):
-    patch.append(plt.Circle((ini_pos[i][0],ini_pos[i][1]) ,pr.par_list[i].mass/10.0,fc=pcolor()))
+    patch.append(plt.Circle((ini_pos[i][0],ini_pos[i][1]) ,pr.par_list[i].mass/8.0,fc=pcolor()))
 
 def anim_init():    
     for i in range(len(ini_pos)):

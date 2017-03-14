@@ -37,6 +37,12 @@ def merged_par_list(par_list,rc):
                 y2=par_list[j].y                            
                 r=np.sqrt((x2-x1)**2+(y2-y1)**2)                     
                 if (r<rc):
+#                     p1=merge_particle(par_list[i],par_list[j])
+#                     p2=merge_particle(par_list[i],par_list[j])
+#                     p1.mass=par_list[i].mass
+#                     p2.mass=par_list[j].mass
+#                     par_list[i]=p1
+#                     par_list[j]=p2
                     merged_par=merge_particle(par_list[i],par_list[j])
                     zero_par=Particle(0,x1,y1,0,0)
                     par_list[i]=merged_par
